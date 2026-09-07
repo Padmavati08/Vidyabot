@@ -31,7 +31,7 @@ Unlike generic flashcard apps, Vidyabot diagnoses student misconceptions prior t
 
 ### 3. Curriculum-Grounded Doubt Tutor
 - Embedded Q&A assistant searching seeded topic definitions, worked numericals, and uploaded student notes.
-- **Server-Side AI Proxy:** Powered by `@google/genai` on `gemini-3.8-flash` via secure backend endpoints (`/api/chat`, `/api/simplify`, `/api/lesson-guidance`).
+- **Server-Side AI Proxy:** Powered by `@google/genai` on `gemini-3.7-flash` via secure backend endpoints (`/api/chat`, `/api/simplify`, `/api/lesson-guidance`).
 - **Grounded Retrieval & Anti-Hallucination:** Answers are strictly grounded in textbook lessons or uploaded notes with transparent source attributions (*"Based on Vidyabot lesson content"* vs *"Based on your uploaded material"*).
 - **Offline Local Fallback:** When running without an external API key, automatically falls back to an instantaneous, keyword- and rules-based local curriculum lookup engine.
 
@@ -69,7 +69,7 @@ Unlike generic flashcard apps, Vidyabot diagnoses student misconceptions prior t
 
 - **Frontend Platform:** React 19, TypeScript, Tailwind CSS, Lucide React icons, Motion animations, Canvas Confetti.
 - **Backend Server:** Express full-stack server running on Node.js with Vite middleware (`server.ts`).
-- **AI Service:** Server-side proxy integrating `@google/genai` (`gemini-3.8-flash`), protecting API keys from browser exposure.
+- **AI Service:** Server-side proxy integrating `@google/genai` (`gemini-3.7-flash`), protecting API keys from browser exposure.
 - **Data Persistence:** Client-side LocalStorage engine (`src/services/storageService.ts`) for zero-setup, privacy-first local session persistence without external database credentials or network exposure.
 
 ---

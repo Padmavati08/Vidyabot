@@ -127,13 +127,13 @@ export const MiniQuizModal: React.FC<MiniQuizModalProps> = ({
                     >
                       <span>{opt}</span>
                       <div
-                        className={`w-4 h-4 rounded-full border flex items-center justify-center text-[10px] shrink-0 ml-2 ${
+                        className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ml-2 transition-all ${
                           isSelected
-                            ? 'border-[#6C3BEF] bg-[#6C3BEF] text-white font-bold'
+                            ? 'border-[#6C3BEF] bg-white'
                             : 'border-slate-300'
                         }`}
                       >
-                        {isSelected && '✓'}
+                        {isSelected && <div className="w-2 h-2 rounded-full bg-[#6C3BEF]" />}
                       </div>
                     </button>
                   );

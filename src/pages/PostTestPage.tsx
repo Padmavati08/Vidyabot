@@ -171,13 +171,13 @@ export const PostTestPage: React.FC<PostTestPageProps> = ({ topicId, userProfile
                 >
                   <span className="text-xs sm:text-sm">{opt}</span>
                   <div
-                    className={`w-5 h-5 rounded-full border flex items-center justify-center text-xs shrink-0 ml-3 ${
+                    className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ml-3 transition-all ${
                       isSelected
-                        ? 'border-[#6C3BEF] bg-[#6C3BEF] text-white font-bold'
+                        ? 'border-[#6C3BEF] bg-white'
                         : 'border-slate-300 bg-white'
                     }`}
                   >
-                    {isSelected && '✓'}
+                    {isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#6C3BEF]" />}
                   </div>
                 </button>
               );
