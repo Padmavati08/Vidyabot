@@ -106,7 +106,7 @@ export const N8nWorkflowModal: React.FC<N8nWorkflowModalProps> = ({ isOpen, onCl
             <label className="text-xs font-bold text-slate-700 flex items-center justify-between">
               <span>n8n Production Webhook URL</span>
               <a
-                href="https://padmavati08.app.n8n.cloud/home/workflows"
+                href="https://padmavati-naik8.app.n8n.cloud/home/workflows"
                 target="_blank"
                 rel="noreferrer"
                 className="text-[11px] text-[#6C3BEF] hover:underline flex items-center gap-1 font-semibold"
@@ -119,7 +119,7 @@ export const N8nWorkflowModal: React.FC<N8nWorkflowModalProps> = ({ isOpen, onCl
                 type="text"
                 value={webhookUrl}
                 onChange={(e) => setWebhookUrl(e.target.value)}
-                placeholder="https://padmavati08.app.n8n.cloud/webhook/vidyabot-ai"
+                placeholder="https://padmavati-naik8.app.n8n.cloud/webhook/vidyabot-ai"
                 className="flex-1 px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-mono text-slate-800 focus:outline-hidden focus:ring-2 focus:ring-[#6C3BEF]"
               />
               <button

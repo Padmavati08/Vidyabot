@@ -85,10 +85,9 @@ const INITIAL_BADGES: Badge[] = [
 ];
 
 export const storageService = {
-  // Remote Hydration Hook (Placeholder for future Firestore / Cloud SQL sync)
+  // Remote Hydration Hook (Local Storage Mode)
   async initAndSyncRemoteData(): Promise<void> {
-    // In Demo Mode, localStorage is the immediate, synchronous source of truth.
-    // TODO: Future Integration - Hydrate from Firestore if user is authenticated
+    // In local demo mode, localStorage is the immediate synchronous source of truth.
     return Promise.resolve();
   },
 

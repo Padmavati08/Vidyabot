@@ -23,12 +23,18 @@ export interface N8nResponsePayload {
   metadata?: Record<string, unknown>;
 }
 
-const DEFAULT_N8N_URL = 'https://padmavati08.app.n8n.cloud/webhook/vidyabot-ai';
+const DEFAULT_N8N_URL = 'https://padmavati-naik8.app.n8n.cloud/webhook/vidyabot-ai';
+const PREVIOUS_N8N_URL = 'https://padmavati08.app.n8n.cloud/webhook/vidyabot-ai';
 const STORAGE_KEY_WEBHOOK = 'vidyabot_n8n_webhook_url';
 
 export const n8nService = {
   getWebhookUrl(): string {
-    return localStorage.getItem(STORAGE_KEY_WEBHOOK) || DEFAULT_N8N_URL;
+    const stored = localStorage.getItem(STORAGE_KEY_WEBHOOK);
+    if (!stored || stored === PREVIOUS_N8N_URL) {
+      localStorage.setItem(STORAGE_KEY_WEBHOOK, DEFAULT_N8N_URL);
+      return DEFAULT_N8N_URL;
+    }
+    return stored;
   },
 
   setWebhookUrl(url: string) {

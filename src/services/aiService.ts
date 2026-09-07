@@ -62,7 +62,36 @@ export const aiService = {
       console.warn('n8n query pass-through:', e);
     }
 
-    // 2. Demo Mode Grounded Knowledge Engine (Instantaneous, Local)
+    // 2. Server-Side Gemini AI Endpoint (/api/chat)
+    try {
+      const uploadedMaterials = storageService.getUploadedMaterials();
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: question,
+          topicId,
+          language,
+          uploadedMaterials,
+          conversationHistory,
+        }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.reply) {
+          return {
+            answer: data.reply,
+            sourceType: data.sourceType || 'gemini_ai',
+            sourceTitle: data.sourceTitle || 'Vidyabot AI Tutor (Gemini)',
+          };
+        }
+      }
+    } catch (e) {
+      console.warn('Server chat proxy pass-through to local knowledge base:', e);
+    }
+
+    // 3. Local Grounded Knowledge Engine (Instantaneous, Local Fallback)
     return this.searchLocalKnowledgeBase(question, topicId, language);
   },
 
@@ -252,7 +281,32 @@ export const aiService = {
       console.warn('n8n error remediation pass-through:', e);
     }
 
-    // Demo Mode Structured 3-Step Error Breakdown
+    // 2. Try server-side Gemini simplify endpoint (/api/simplify)
+    try {
+      const res = await fetch('/api/simplify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          questionText,
+          studentAnswer,
+          correctAnswer,
+          explanation,
+          errorType,
+          language,
+        }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.simplifiedText) {
+          return data.simplifiedText;
+        }
+      }
+    } catch (e) {
+      console.warn('Server simplify proxy pass-through to local breakdown:', e);
+    }
+
+    // 3. Local Structured 3-Step Error Breakdown Fallback
     const isMr = language === 'mr';
     const isHi = language === 'hi';
 
